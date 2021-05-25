@@ -13,7 +13,7 @@ export default function Connexion({ navigation }) {
     return ( 
 
         <View style={styles.container}>
-          <Text style={styles.logo}>QR-CODE</Text>
+          <Text style={styles.logo}>Go style</Text>
           <View style={styles.inputView} >
             <TextInput  
               style={styles.inputText}
@@ -46,7 +46,7 @@ export default function Connexion({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#003f5c',
+    backgroundColor: '#2A66AE',
     alignItems: 'center',
     justifyContent: 'center',
 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   logo:{
     fontWeight:"bold",
     fontSize:50,
-    color:"#fb5b5a",
+    color:"white",
     marginBottom:40
   },
   inputView:{
@@ -64,8 +64,7 @@ const styles = StyleSheet.create({
     height:50,
     marginBottom:20,
     justifyContent:"center",
-    padding:20,
-    width: "50%"
+    padding:20
   },
   inputText:{
     height:50,
@@ -83,8 +82,7 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     marginTop:40,
-    marginBottom:10,
-    width: "50%"
+    marginBottom:10
   },
   loginText:{
     color:"white"
