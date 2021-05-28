@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, ListView} from 'react-native';
+import React, { Component } from 'react';
+import { Alert, Modal, StyleSheet, Text, View, ListView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import "./Home.scss";
+
 
 
 export default function Home({ navigation }) {
@@ -13,17 +15,17 @@ export default function Home({ navigation }) {
   <li>{promo}</li>
 );
 
-let ok = console.log("ok")
-
     return (
       <View style={ styles.container }>
           <Text style={styles.h1}>Bienvenue sur Go Style</Text>
-          <Text style={styles.cell}>Promotions en cours :</Text>
-            <ul>{listItems}</ul>
-          <Text style={styles.cell}>Scanner un QRCode</Text>
+          <View style={styles.tab}>
+            <Text style={styles.promo}>Tableau de vos promotions :</Text>
+              <ul>{listItems}</ul>
+            <Text style={styles.cell}>Scanner un QRCode</Text>
+          </View>
       </View>
     );
-  }
+}
 
   const styles = StyleSheet.create({
     container: {
@@ -33,8 +35,24 @@ let ok = console.log("ok")
       justifyContent: 'center',
       backgroundColor: '#2A66AE',
     },
+    tab: {
+      backgroundColor: 'white',
+      width:"90vw",
+      height:"70vh",
+    },
     cell: {
-        color: "white",
+        color: "black",
+        fontWeight:"bold",
+        position:"absolute",
+        bottom:"20px",
+        right:'0',
+        left:'0',  
+        textAlign:'center',      
+    },
+    promo:{
+      color: "black",
+      fontWeight:"bold",
+      margin:"10px",
     },
     h1: {
       color: "white",
