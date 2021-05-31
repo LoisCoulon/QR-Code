@@ -17,9 +17,9 @@ export default function Connexion({ navigation }) {
           <View style={styles.inputView} >
             <TextInput  
               style={styles.inputText}
-              placeholder="Nom d'utilisateur..." 
+              placeholder="Adresse e-mail" 
               placeholderTextColor="#003f5c"
-              onChangeText={text => this.setState({username:text})}/>
+              onChangeText={text => this.setState({mail:text})}/>
           </View>
           <View style={styles.inputView} >
             <TextInput  
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   inputView:{
     width:"80%",
-    backgroundColor:"#465881",
+    backgroundColor:"#e0e0e0",
     borderRadius:25,
     height:50,
     marginBottom:20,
