@@ -19,7 +19,7 @@ export default function Inscription({ navigation }) {
           <View style={styles.inputView} >
             <TextInput  
               style={styles.inputText}
-              placeholder="Choisir un pseudo" 
+              placeholder="Choisir un mot de passe" 
               placeholderTextColor="#003f5c"
               onChangeText={text => this.setState({username:text})}/>
           </View>
@@ -27,7 +27,7 @@ export default function Inscription({ navigation }) {
             <TextInput  
               secureTextEntry
               style={styles.inputText}
-              placeholder="Choisir un mot de passe" 
+              placeholder="Confirmer le mot de passe" 
               placeholderTextColor="#003f5c"
               onChangeText={text => this.setState({password:text})}/>
           </View>
