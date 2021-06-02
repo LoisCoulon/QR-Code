@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, View,Pressable, ListView} from 'react-native';
+import { Alert, Modal, StyleSheet, Text, View, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
-import "./Home.scss";
+
 
 
 
@@ -43,6 +43,10 @@ export default function Home({ navigation }) {
                 style={styles.modalToggle}
                 onPress={() => setModalOpen(false)}          
               />
+            <Image
+              style={styles.tinyLogo}
+              source={require('./../assets/favicon.png')}
+            />
               <Text>{ref}</Text>
             </View>
           </Modal>
@@ -109,7 +113,14 @@ export default function Home({ navigation }) {
       fontStyle:'italic',
       marginTop:'10px',
       marginLeft:"15px"
-    }
+    },
+    tinyLogo: {
+      alignSelf:'center',
+      width: 50,
+      height: 50,
+      margin:'10px',
+      marginTop:"100px"
+    },
     
 });
   
