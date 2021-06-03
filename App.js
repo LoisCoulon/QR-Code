@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Connexion from './Components/Connexion';
 import Home from './Components/Home'
+import Inscription from './Components/Inscription';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,11 @@ export default function App() {
           name="Accueil"
           component={Home}
           options={{ title: 'Accueil' }}
+        />
+          <Stack.Screen
+          name="Inscription"
+          component={Inscription}
+          options={{ title: 'Inscription' }}
         />
       
       </Stack.Navigator>

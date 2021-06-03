@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, View,Pressable, ListView} from 'react-native';
+import { Alert, Modal, StyleSheet, Text, View, Image, PermissionsAndroid, Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
-import "./Home.scss";
+
 
 
 
@@ -16,6 +16,31 @@ export default function Home({ navigation }) {
 //     {id:2, title:"promo2", content: "-50% sur les chemises" },
 //     {id:3, title:"promo3", content: "-50% sur les jeans" }
 // ]);
+
+const requestCameraPermission = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        title: "Cool Photo App Camera Permission",
+        message:
+          "Cool Photo App needs access to your camera " +
+          "so you can take awesome pictures.",
+        buttonNeutral: "Ask Me Later",
+        buttonNegative: "Cancel",
+        buttonPositive: "OK"
+      }
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log("You can use the camera");
+    } else {
+      console.log("Camera permission denied");
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+};
+
   const [modalOpen, setModalOpen] = useState(false);
   const promo = ["promo1"]
   const promoOld = ["promo2"]
@@ -30,7 +55,7 @@ export default function Home({ navigation }) {
 
     return (
     <View style={ styles.container }>
-      <Text style={styles.h1}>Bienvenue sur Go Style</Text>
+      <Text style={styles.titre}>Bienvenue sur Go Style</Text>
       <View style={styles.tab}>
         <Text style={styles.promo}>Tableau de vos promotions :</Text>
         <Text style={styles.title}>En cours</Text>
@@ -43,6 +68,10 @@ export default function Home({ navigation }) {
                 style={styles.modalToggle}
                 onPress={() => setModalOpen(false)}          
               />
+            <Image
+              style={styles.tinyLogo}
+              source={require('./../assets/favicon.png')}
+            />
               <Text>{ref}</Text>
             </View>
           </Modal>
@@ -51,7 +80,10 @@ export default function Home({ navigation }) {
 
         <Text style={styles.title}>Passées</Text>
         <Text style={styles.modalToggle} onPress={() => setModalOpen(true)}>{listItems2}</Text>
-        <Text style={styles.cell}>Scanner un QRCode</Text>
+        <View style={styles.cell}>
+          <Button style={styles.cell} title="Scanner un qr code" onClick={requestCameraPermission()} />
+        </View>
+
       </View>
     </View>
     );
@@ -71,22 +103,21 @@ export default function Home({ navigation }) {
       height:"70vh",
     },
     cell: {
-        color: "black",
-        fontWeight:"bold",
-        position:"absolute",
+        fontWeight:"bold",        
+        width:"50%",
+        alignSelf:'center',
+        position:'absolute',
         bottom:"20px",
-        right:'0',
-        left:'0',  
-        textAlign:'center',      
+         
     },
     promo:{
       color: "black",
       fontWeight:"bold",
       margin:"10px",
     },
-    h1: {
+    titre: {
       color: "white",
-      fontSize: "35px",
+      fontSize: 35,
       position: "absolute",
       top: 0
     },
@@ -95,8 +126,7 @@ export default function Home({ navigation }) {
       borderWidth:1,
       borderColor:"#f2f2f2",
       padding:10,
-      alignSelf:'start',
-      listStyle:"none",
+      alignSelf:'flex-start',
       marginTop:'10px',
       marginLeft:"15px"
     },
@@ -109,7 +139,14 @@ export default function Home({ navigation }) {
       fontStyle:'italic',
       marginTop:'10px',
       marginLeft:"15px"
-    }
+    },
+    tinyLogo: {
+      alignSelf:'center',
+      width: 50,
+      height: 50,
+      margin:'10px',
+      marginTop:"100px"
+    },
     
 });
   
