@@ -81,7 +81,7 @@ const requestCameraPermission = async () => {
         <Text style={styles.title}>Passées</Text>
         <Text style={styles.modalToggle} onPress={() => setModalOpen(true)}>{listItems2}</Text>
         <View style={styles.cell}>
-          <Button style={styles.cell} title="Scanner un qr code"/>
+          <Button style={styles.cell} title="Scanner un qr code" onClick={requestCameraPermission()} />
         </View>
 
       </View>
